@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shorten a Long URL</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
+
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Khairul's URL Shortener</h1>
+            <form id="shortenForm">
+                <label for="longLink">Paste a long URL</label>
+                <input type="url" id="longLink" name="longLink" placeholder="Example: http://super-long-link.com/shorten-it" required>
+                <div id="urlValidationMessage" class="validation-message">Please enter a valid URL.</div>
+                <div id="sampleShortenedUrl" class="sampleShortenedUrl">
+                    <div class="domain-container">
+                        <div class="domain-label">Domain</div>
+                        <div class="domain">localhost:8080</div>
+                    </div>
+                    <div id="slash" class="slash"> /</div>
+                    <div class="alias-container">
+                        <label for="alias" class="alias-label">Enter a back-half (optional)</label>
+                        <input type="text" id="alias" class="alias" name="alias" placeholder="example: favourite-link">
+                    </div>
+                </div>                
+                <button type="submit">Shorten URL</button>
+            </form>
+            <div id="errorMessage" class="error-message"></div>
+            <div id="resultContainer" style="display: none;">
+                <div id="originalUrlDiv">
+                    <h2>Your long URL</h2>
+                    <p id="originalUrl"></p>
+                </div>
+                <div id="shortUrlDiv">
+                    <h2>Your shortened URL</h2>
+                    <p id="shortUrl"></p>
+                    <button id="copyButton" title="Copy to clipboard">
+                        <img src="icons/copy-svgrepo-com.svg" alt="Copy Icon" class="icon">Copy
+                    </button>
+                    <button id="generateQRButton" title="Generate a QR Code">
+                        <img src="icons/qr-code-svgrepo-com.svg" alt="QR Icon" class="icon">QR Code
+                    </button>
+                    <img id="qrCodeImage" src="" alt="QR Code" style="display: none;">
+                </div>
+                <div id="notification" class="notification">
+                    Link copied to clipboard!
+                </div>
+                <button id="downloadQRButton" class="downloadQRButton" title="Download QR Code" style="display: none;">
+                    <img src="icons/download-minimalistic-svgrepo-com.svg" alt="Download Icon" class="icon">Download QR Code
+                </button>
+                <button id="resetButton">
+                    <img src="icons/go-back-svgrepo-com.svg" alt="Go back" class="icon">Shorten Another URL
+                </button>
+            </div>
+        </div>
+
+    </body>
+</html>

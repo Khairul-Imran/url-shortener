@@ -1,0 +1,247 @@
+:root {
+  --background-color: #F7F3ED;
+  --primary-color: #39577F;
+  --secondary-color: #BFBCE1;
+  --accent-color: #418B90;
+  --darker-accent-color: #306669;
+  --text-color: #120D08;
+}
+
+/* Reset default browser styles */
+body, h1, h2, p, form, button {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+body {
+  background-image: url("background/layered-waves-haikei.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form {
+  background-color: var(--background-color);
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+  outline-color: var(--secondary-color);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  width: 100%;
+  color: var(--primary-color);
+}
+
+input[type="url"],
+input[type="text"] {
+  display: block;
+  width: 97%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.sampleShortenedUrl {
+  display: flex;
+  align-items: center;
+}
+
+.domain-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  width: 100%;
+  color: var(--primary-color);
+}
+
+.domain-container {
+  width: 40%;
+}
+
+.slash {
+  width: 2%;
+  height: auto;
+  font-size: 35px;
+  padding-top: 20px;
+  padding-right: 5px;
+  color: var(--primary-color);
+}
+
+.alias-container {
+  width: 56%;
+}
+
+.domain {
+  width: 90%;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: normal;
+
+}
+
+/* URL Text Color */
+#longLink {
+  color: var(--accent-color);
+}
+
+#alias {
+  color: var(--accent-color);
+}
+
+p {
+  color: var(--accent-color);
+}
+
+button[type="submit"],
+button#copyButton,
+button#generateQRButton,
+button#resetButton,
+button#downloadQRButton {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+
+  line-height: normal;
+  display: inline-flex;
+  align-items: center;
+}
+
+button[type="submit"]:hover,
+button#copyButton:hover,
+button#generateQRButton:hover,
+button#resetButton:hover,
+button#downloadQRButton:hover {
+  background-color: var(--darker-accent-color);
+}
+
+/* Button Icons */
+button img.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+#errorMessage,
+#notification {
+  color: red;
+  margin-top: 10px;
+}
+
+#notification {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#resultContainer {
+  margin-top: 20px;
+  background-color: var(--background-color);
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#originalUrlDiv h2,
+#shortUrlDiv h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+#originalUrl,
+#shortUrl {
+  margin-bottom: 20px;
+  border: 2px solid var(--secondary-color); /* Outline */
+  padding: 10px;
+  border-radius: 5px;
+  width: 96%;
+}
+
+#qrCodeImage {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.validation-message {
+  color: red;
+  display: none;
+}
+
+.downloadQRButton {
+  width: 29%;
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+}
+
+#resetButton {
+  width: 29%;
+}
+
+/* Tooltips */
+button[title] {
+  position: relative;
+  cursor: pointer;
+}
+
+button[title]::before {
+  content: attr(title);
+  position: absolute;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 5px 15px; /* Spacing */
+  border-radius: 5px;
+  display: none;
+  font-size: 14px;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 200px;
+  white-space: normal;
+  border: 8px solid transparent;
+}
+
+button[title]:hover::before {
+  display: block;
+}
