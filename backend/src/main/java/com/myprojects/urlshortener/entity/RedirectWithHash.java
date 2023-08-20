@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class RedirectWithHash {
 
@@ -20,8 +22,11 @@ public class RedirectWithHash {
     @Column(nullable = false) // Required.
     private String url;
 
-    public RedirectWithHash() {
+    @Column(nullable = false)
+    private LocalDateTime expiryTimestamp;
 
+    public RedirectWithHash() {
+        this.expiryTimestamp = null;
     }
 
     public RedirectWithHash(final String hash, final String url) {
@@ -53,12 +58,21 @@ public class RedirectWithHash {
         this.url = url;
     }
 
+    public void setExpiryTimestamp(LocalDateTime expiryTimestamp) {
+        this.expiryTimestamp = expiryTimestamp;
+    }
+
+    public LocalDateTime getExpiryTimestamp() {
+        return expiryTimestamp;
+    }
+
     @Override
     public String toString() {
         return "Redirect{" +
                 "id=" + id +
                 ", hash='" + hash + '\'' +
                 ", url='" + url + '\'' +
+                ", timestamp='" + expiryTimestamp + '\'' +
                 '}';
     }
 

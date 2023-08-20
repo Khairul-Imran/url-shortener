@@ -26,7 +26,7 @@ public class RedirectWithAlias {
     private LocalDateTime expiryTimestamp;
 
     public RedirectWithAlias() {
-
+        this.expiryTimestamp = null;
     }
 
     public RedirectWithAlias(final String alias, final String url) {
