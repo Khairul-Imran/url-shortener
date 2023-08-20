@@ -72,7 +72,7 @@ public class RedirectController {
         redirectCreationRequestUsingHash.setHash(generateRandomHash());
         // For timestamp
         LocalDateTime currentTimestamp = LocalDateTime.now();
-        LocalDateTime expiryTimestamp = currentTimestamp.plusMinutes(15);
+        LocalDateTime expiryTimestamp = currentTimestamp.plusMinutes(5);
         redirectCreationRequestUsingHash.setExpiryTimestamp(expiryTimestamp);
 
         return ResponseEntity.ok(redirectService.createRedirectForHash(redirectCreationRequestUsingHash));
