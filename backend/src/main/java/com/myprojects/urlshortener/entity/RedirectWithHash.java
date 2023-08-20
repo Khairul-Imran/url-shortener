@@ -29,9 +29,10 @@ public class RedirectWithHash {
         this.expiryTimestamp = null;
     }
 
-    public RedirectWithHash(final String hash, final String url) {
+    public RedirectWithHash(final String hash, final String url, LocalDateTime expiryTimestamp) {
         this.hash = hash;
         this.url = url;
+        this.expiryTimestamp = expiryTimestamp;
     }
 
     public Long getId() {

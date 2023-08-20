@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
+@Repository("redirectRepositoryForAlias")
 public interface RedirectRepositoryForAlias extends JpaRepository<RedirectWithAlias, Long> {
     Optional<RedirectWithAlias> findByAlias(String alias);
 

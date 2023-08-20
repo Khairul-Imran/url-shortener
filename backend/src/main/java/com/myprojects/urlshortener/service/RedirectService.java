@@ -40,7 +40,7 @@ public class RedirectService {
             throw new BadRequestException("Alias already exists.");
         }
         System.out.println("Redirect Request " + redirectCreationRequestUsingAlias.toString());
-        RedirectWithAlias redirectWithAlias = redirectRepositoryForAlias.save(new RedirectWithAlias(redirectCreationRequestUsingAlias.getAlias() , redirectCreationRequestUsingAlias.getUrl()));
+        RedirectWithAlias redirectWithAlias = redirectRepositoryForAlias.save(new RedirectWithAlias(redirectCreationRequestUsingAlias.getAlias() , redirectCreationRequestUsingAlias.getUrl(), redirectCreationRequestUsingAlias.getExpiryTimestamp()));
         System.out.println("Redirect " + redirectWithAlias);
 
         return Optional.ofNullable(redirectWithAlias);
@@ -52,7 +52,7 @@ public class RedirectService {
         }
 
         System.out.println("Redirect Request " + redirectCreationRequestUsingHash.toString());
-        RedirectWithHash redirectWithHash = redirectRepositoryForHash.save(new RedirectWithHash(redirectCreationRequestUsingHash.getHash() , redirectCreationRequestUsingHash.getUrl()));
+        RedirectWithHash redirectWithHash = redirectRepositoryForHash.save(new RedirectWithHash(redirectCreationRequestUsingHash.getHash() , redirectCreationRequestUsingHash.getUrl(), redirectCreationRequestUsingHash.getExpiryTimestamp()));
         System.out.println("Redirect " + redirectWithHash);
 
         return Optional.ofNullable(redirectWithHash);

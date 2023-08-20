@@ -29,9 +29,10 @@ public class RedirectWithAlias {
         this.expiryTimestamp = null;
     }
 
-    public RedirectWithAlias(final String alias, final String url) {
+    public RedirectWithAlias(final String alias, final String url, LocalDateTime expiryTimestamp) {
         this.alias = alias;
         this.url = url;
+        this.expiryTimestamp = expiryTimestamp;
     }
 
     public Long getId() {

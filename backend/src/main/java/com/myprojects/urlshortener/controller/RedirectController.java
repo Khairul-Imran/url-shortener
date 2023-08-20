@@ -5,6 +5,7 @@ import com.myprojects.urlshortener.entity.RedirectWithHash;
 import com.myprojects.urlshortener.request.RedirectCreationRequestUsingAlias;
 import com.myprojects.urlshortener.request.RedirectCreationRequestUsingHash;
 import com.myprojects.urlshortener.service.RedirectService;
+import com.myprojects.urlshortener.service.TimeStampService; // Might remove
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 
 import static com.myprojects.urlshortener.utility.HashGenerator.generateRandomHash;
 import static com.myprojects.urlshortener.utility.HashUtils.isHash;
@@ -22,10 +24,13 @@ import static org.springframework.http.HttpStatus.MOVED_PERMANENTLY;
 public class RedirectController {
 
     private RedirectService redirectService;
+    // Might remove
+    // private TimeStampService timeStampService;
 
     @Autowired
-    public RedirectController(RedirectService redirectService) {
+    public RedirectController(RedirectService redirectService, TimeStampService timeStampService) {
         this.redirectService = redirectService;
+        // this.timeStampService = timeStampService; // this too
     }
 
     @GetMapping("/{hashOrAlias}")
@@ -53,6 +58,11 @@ public class RedirectController {
     public ResponseEntity<?> createRedirectForAlias(@Valid @RequestBody RedirectCreationRequestUsingAlias redirectCreationRequestUsingAlias) {
         // Testing to see if the correct data is received from the backend.
         System.out.println("Received request with body: " + redirectCreationRequestUsingAlias);
+        // For timestamp
+        LocalDateTime currentTimestamp = LocalDateTime.now();
+        LocalDateTime expiryTimestamp = currentTimestamp.plusMinutes(15);
+        redirectCreationRequestUsingAlias.setExpiryTimestamp(expiryTimestamp);
+
         return ResponseEntity.ok(redirectService.createRedirectForAlias(redirectCreationRequestUsingAlias));
     }
 
@@ -60,6 +70,11 @@ public class RedirectController {
     public ResponseEntity<?> createRedirectForHash(@RequestBody RedirectCreationRequestUsingHash redirectCreationRequestUsingHash) {
         System.out.println("Received request with body: " + redirectCreationRequestUsingHash);
         redirectCreationRequestUsingHash.setHash(generateRandomHash());
+        // For timestamp
+        LocalDateTime currentTimestamp = LocalDateTime.now();
+        LocalDateTime expiryTimestamp = currentTimestamp.plusMinutes(15);
+        redirectCreationRequestUsingHash.setExpiryTimestamp(expiryTimestamp);
+
         return ResponseEntity.ok(redirectService.createRedirectForHash(redirectCreationRequestUsingHash));
     }
 }
