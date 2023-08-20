@@ -2,6 +2,7 @@ package com.myprojects.urlshortener;
 
 import com.myprojects.urlshortener.repository.RedirectRepositoryForAlias;
 import com.myprojects.urlshortener.repository.RedirectRepositoryForHash;
+import jakarta.transaction.Transactional;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ public class ExpiryCleanupTask {
     }
 
     @Scheduled(fixedRate = 60000) // Runs every minute.
+    @Transactional
     public void removeExpiredEntries() {
         LocalDateTime currentTimestamp = LocalDateTime.now();
         redirectRepositoryForAlias.deleteByExpiryTimestampBefore(currentTimestamp);
