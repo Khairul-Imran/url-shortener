@@ -11,7 +11,7 @@
 This URL Shortener Application is a web-based tool designed to simplify the sharing of long URLs by generating shorter, easy-to-share links. This project was created to showcase proficiency in backend and frontend development, as well as database management.
 
 ## Features
-1. Shorten long URLs into concise and shareable links ending with either an "Alias" chosen by the user are a randomly generated hash using Base 62 encoding.
+1. Shorten long URLs into concise and shareable links ending with either an "Alias" chosen by the user or a randomly generated hash using Base 62 encoding.
 2. Validation checks to prevent duplicate aliases or invalid links from being used.
 3. Copy button for quick copying of the shortened URL to the clipboard.
 4. Generate QR codes linked to the shortened URL for easy sharing.
